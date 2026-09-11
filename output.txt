@@ -1,5 +1,17 @@
+homeNotification1:
+We will adjust the pricing for the Flash series effective from 12:00 Beijing Time on September 10, 2026. During off-peak hours, the unit price will be $0.003 for input cache hits, $0.15 for input cache misses, and $0.6 for output. Peak-hour prices will be double the off-peak rates. Please plan your usage accordingly.
+
+homeNotification2:
+In response to user demand, we have decided to continue providing API services for DeepSeek V4 Pro after September 14, 2026, with the billing method remaining unchanged. We will provide further notice should there be any changes. Thank you for your understanding and support!
+
 priceNotification:
 We will adjust the pricing for the Flash series effective from 12:00 Beijing Time on September 10, 2026. During off-peak hours, the unit price will be $0.003 for input cache hits, $0.15 for input cache misses, and $0.6 for output. Peak-hour prices will be double the off-peak rates. Please plan your usage accordingly.
+
+homeNotification1:
+我们将于北京时间 2026 年 9 月 10 日 12:00 起，调整 flash 系列定价：空闲时段输入缓存命中单价 0.02 元、输入缓存未命中单价 1 元，输出单价 4 元；高峰时段价格为空闲时段价格的 2 倍。请合理安排您的使用。
+
+homeNotification2:
+为响应广大用户的需求，我们决定在 2026 年 9 月 14 日之后继续提供 DeepSeek V4 Pro 的 API 调用服务，计费方式保持不变；如有变动，我们将另行通知。感谢您的理解与支持！
 
 priceNotification:
 我们将于北京时间 2026 年 9 月 10 日 12:00 起，调整 flash 系列定价：空闲时段输入缓存命中单价 0.02 元、输入缓存未命中单价 1 元，输出单价 4 元；高峰时段价格为空闲时段价格的 2 倍。请合理安排您的使用。
