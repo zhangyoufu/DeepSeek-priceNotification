@@ -1,5 +1,5 @@
 priceNotification:
-DeepSeek plans to officially release the V4.1 Flash model around September 10, 2026 (Beijing Time). After extensive internal and external testing, V4.1 Flash has comprehensively surpassed V4 Pro across all key metrics, including performance, cost, speed, and task completion time. In keeping with our commitment to user responsibility, following the official launch of V4.1 Flash and prior to the release of V4.1 Pro, all requests to the Pro model will be routed to V4.1 Flash and billed at Flash's price. If you encounter any issues during your comparative testing between V4 Pro and V4.1 Flash, please do not hesitate to reach out to us with your feedback. Thank you for your support!
+We will adjust the pricing for the Flash series effective from 12:00 Beijing Time on September 10, 2026. During off-peak hours, the unit price will be $0.003 for input cache hits, $0.15 for input cache misses, and $0.6 for output. Peak-hour prices will be double the off-peak rates. Please plan your usage accordingly.
 
 priceNotification:
-DeepSeek 计划于北京时间 2026 年 9 月 10 日前后正式发布 V4.1 Flash 模型。经内部、外部多方测试，V4.1 Flash 在性能、费用、速度、总用时等各项指标上已全面超越 V4 Pro。秉持着对用户负责的态度，在 V4.1 Flash 正式上线之后、V4.1 Pro上线之前，我们会将对 V4 Pro 的请求全部路由到 V4.1 Flash，并按 V4.1 Flash 单价计费。如您在 V4 Pro 和 V4.1 Flash 的对比测试中发现任何问题，请及时向我们反馈，感谢您的支持！
+我们将于北京时间 2026 年 9 月 10 日 12:00 起，调整 flash 系列定价：空闲时段输入缓存命中单价 0.02 元、输入缓存未命中单价 1 元，输出单价 4 元；高峰时段价格为空闲时段价格的 2 倍。请合理安排您的使用。
