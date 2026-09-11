@@ -1,0 +1,79 @@
+name: DeepSeek Price Notification
+
+on:
+  push:
+  schedule:
+    # Every 15 minutes with random-ish offset (avoids 0/15/30/45)
+    - cron: '7,22,37,52 * * * *'
+
+concurrency: cron
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+env:
+  WEBSUB_HUB_URL: https://pubsubhubbub.superfeedr.com/
+  FEED_URL: https://zhangyoufu.github.io/DeepSeek-priceNotification/atom.xml
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.detect-change.outputs.changed }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 10
+
+      - name: Run fetch script
+        id: fetch
+        env:
+          DEEPSEEK_PLATFORM_URL: ${{ secrets.DEEPSEEK_PLATFORM_URL }}
+        run: node fetch.js | tee output.txt
+
+      - name: Detect if output.txt changed
+        id: detect-change
+        run: |-
+          if git diff --quiet HEAD -- output.txt 2>/dev/null; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push output.txt
+        if: steps.detect-change.outputs.changed == 'true'
+        run: |-
+          git config user.name 'github-actions[bot]'
+          git config user.email '${{ github.actor_id }}+github-actions[bot]@users.noreply.github.com'
+          git add output.txt
+          git commit -m "update output.txt" -m "${{ steps.fetch.outputs.jsUrl }}"
+          git push -o ci.skip origin HEAD
+
+      - name: Generate Atom feed
+        if: steps.detect-change.outputs.changed == 'true'
+        run: mkdir gh-pages; node generate-feed.js >gh-pages/atom.xml
+
+      - name: Setup Pages
+        if: steps.detect-change.outputs.changed == 'true'
+        uses: actions/configure-pages@v6
+
+      - name: Upload Artifact
+        if: steps.detect-change.outputs.changed == 'true'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: gh-pages
+
+      - name: Deploy to GitHub Pages
+        if: steps.detect-change.outputs.changed == 'true'
+        uses: actions/deploy-pages@v5
+
+      - name: Ping WebSub Hub
+        if: steps.detect-change.outputs.changed == 'true'
+        run: curl --silent --show-error --data-urlencode hub.mode=publish --data-urlencode hub.url="${FEED_URL}" "${WEBSUB_HUB_URL}"
